@@ -14,7 +14,7 @@ export class NestTransportLogger implements LoggerService {
     protected transports: Transport[];
     protected enableEventsWithoutNulls: boolean;
 
-    constructor(protected context: string, options: NestTransportLoggerOptions) {
+    constructor(options: NestTransportLoggerOptions) {
         const { allowEmptyTransports, transports } = options;
         if (transports.length === 0 && !allowEmptyTransports) {
             this.transports = [new DefaultTransportConsole()];

@@ -5,7 +5,7 @@ export interface LogEvent {
     additionalContext: string | null;
     stacktrace: string | null;
     baseContext: any;
-    logSource: LogLevel;
+    type: LogLevel;
     timestamp: Date;
 }
 
