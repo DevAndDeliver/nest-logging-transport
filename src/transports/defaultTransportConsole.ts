@@ -10,6 +10,8 @@ const defaultColorSchema = {
     error: 'red',
     mainContext: 'yellow',
     additionalContext: 'yellow',
+    timestamp: 'white',
+    stacktrace: 'white',
 } as const;
 
 export class DefaultTransportConsole implements Transport {
@@ -19,19 +21,22 @@ export class DefaultTransportConsole implements Transport {
         if (!eventWithoutNulls) {
             throw new Error('set enableEventsWithoutNulls to true in order to use this logger');
         }
+
         const { message, additionalContext, stacktrace, baseContext, type, timestamp } = eventWithoutNulls;
         let context = this.colorize(`[${baseContext || 'Application'}]`, 'mainContext');
         if (additionalContext) {
             context += this.colorize(`[${additionalContext}]`, 'additionalContext');
         }
 
+        const formattedStacktract = stacktrace ? this.colorize(`${stacktrace}\n`, 'stacktrace') : stacktrace;
         const logLevel = type.toUpperCase();
-        const colorizedLogLevel = this.colorize(logLevel, type);
-        const formattedLogLevel = addPadding(colorizedLogLevel, LONGEST_LOG_LEVEL_NAME - logLevel.length);
-        const colorizedMessage = this.colorize(message, type);
+        const formattedLogLevel = this.colorize(addPadding(logLevel, LONGEST_LOG_LEVEL_NAME - logLevel.length), type);
+        const formattedTimestamp = this.colorize(timestamp.toLocaleString(), 'timestamp');
+        const formattedMessage = this.colorize(message, type);
 
-        const logString = `${+timestamp} ${formattedLogLevel} ${context} ${colorizedMessage}\n${stacktrace}`;
-        process.stdout.write(logString);
+        const logString = `[Nest] ${process.pid} - ${formattedTimestamp} ${formattedLogLevel} ${context} ${formattedMessage}\n${formattedStacktract}`;
+        const colorizedLogString = this.colorize(logString, type);
+        process.stdout.write(colorizedLogString);
     }
 
     private colorize(text: string, type: keyof typeof defaultColorSchema): string {

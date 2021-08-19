@@ -16,6 +16,7 @@ const bootstrap = async () => {
     const app = await NestFactory.create(ExampleModule, { logger: customLogger, bufferLogs: true });
     logger.log('Application ready');
     logger.verbose('Just a test log with context', 'thisIsContext');
+    logger.error(new Error('123'));
     await app.listen(3334, () => logger.log('Server listening'));
 };
 

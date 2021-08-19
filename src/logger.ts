@@ -41,7 +41,7 @@ export class NestTransportLogger implements LoggerService {
         return this.handleLogMessage({
             message,
             args: optionalParams,
-            type: 'log',
+            type: 'error',
             canHaveStacktrace: true,
         });
     }
@@ -138,6 +138,13 @@ export class NestTransportLogger implements LoggerService {
         args,
         canHaveStacktrace,
     }: Omit<HandleLogMessageInput, 'type'>): ParseLogInformationPayload {
+        if (canHaveStacktrace && this.isError(message)) {
+            const err = message;
+            const errMessage = err.message;
+            const stacktrace = err.stack;
+            return { messages: [errMessage].concat(args || []), stacktrace };
+        }
+
         if (!args || args.length === 0) {
             return { messages: [message] };
         }
@@ -170,5 +177,9 @@ export class NestTransportLogger implements LoggerService {
         }
 
         return { messages: [message, ...args] };
+    }
+
+    private isError(val: unknown | Error): val is Error {
+        return !!(val && (<Error>val).message);
     }
 }
