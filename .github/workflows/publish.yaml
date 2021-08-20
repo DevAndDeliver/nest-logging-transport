@@ -1,8 +1,9 @@
 name: Publish
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - '*'
 
 jobs:
   test:
@@ -15,8 +16,25 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: yarn install
       - run: yarn test --coverage
+  create_github_release:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: release
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: false
+          prerelease: false
+          release_name: ${{ steps.version.outputs.version }}
+          tag_name: ${{ github.ref }}
+          body_path: CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
   publish:
     runs-on: ubuntu-latest
+    needs: [test]
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
