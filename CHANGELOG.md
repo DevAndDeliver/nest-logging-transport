@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/DevAndDeliver/nest-logging-transport/compare/v0.0.2...v0.0.3) (2021-08-20)
+
+
+### Bug Fixes
+
+* add missing checkout action to release ([955fcc7](https://github.com/DevAndDeliver/nest-logging-transport/commit/955fcc70d34fddddcd768d331d91bbe10b5e64c8))
+
 ### [0.0.2](https://github.com/DevAndDeliver/nest-logging-transport/compare/v0.0.1...v0.0.2) (2021-08-20)
 
 
