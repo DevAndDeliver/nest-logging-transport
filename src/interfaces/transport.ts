@@ -19,5 +19,5 @@ export interface Transport {
 
 export type TransportCallFunction = (
     _event: LogEvent,
-    eventWithoutNulls: LogEventWithReplacedNulls | null,
+    eventWithoutNulls: LogEventWithReplacedNulls,
 ) => unknown | Promise<unknown>;

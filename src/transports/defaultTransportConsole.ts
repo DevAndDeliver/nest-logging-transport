@@ -17,11 +17,7 @@ const defaultColorSchema = {
 export class DefaultTransportConsole implements Transport {
     private readonly colorSchema = defaultColorSchema;
 
-    public call(_e: LogEvent, eventWithoutNulls: LogEventWithReplacedNulls | null): void {
-        if (!eventWithoutNulls) {
-            throw new Error('set enableEventsWithoutNulls to true in order to use this logger');
-        }
-
+    public call(_e: LogEvent, eventWithoutNulls: LogEventWithReplacedNulls): void {
         const { message, additionalContext, stacktrace, baseContext, type, timestamp } = eventWithoutNulls;
         let context = this.colorize(`[${baseContext || 'Application'}]`, 'mainContext');
         if (additionalContext) {

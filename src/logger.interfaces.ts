@@ -4,7 +4,6 @@ import { Transport } from './interfaces/transport';
 export interface NestTransportLoggerOptions {
     transports: Transport[];
     allowEmptyTransports?: boolean;
-    enableEventsWithoutNulls?: boolean;
 }
 
 export interface HandleLogMessageInput {

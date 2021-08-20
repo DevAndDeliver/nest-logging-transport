@@ -12,7 +12,7 @@ import { replaceNullsWithEmptyStrings } from './utils/log.utils';
 @Injectable()
 export class NestTransportLogger implements LoggerService {
     protected transports: Transport[];
-    protected enableEventsWithoutNulls: boolean;
+    protected readonly enableEventsWithoutNulls = true;
 
     constructor(options: NestTransportLoggerOptions) {
         const { allowEmptyTransports, transports } = options;
@@ -21,8 +21,6 @@ export class NestTransportLogger implements LoggerService {
         } else {
             this.transports = transports;
         }
-
-        this.enableEventsWithoutNulls = options.enableEventsWithoutNulls ?? true;
     }
 
     log(message: any, context?: string): void;
@@ -85,7 +83,9 @@ export class NestTransportLogger implements LoggerService {
                 eventWithoutNulls = replaceNullsWithEmptyStrings(e);
             }
 
-            this.transports.forEach((transport) => transport.call(e, eventWithoutNulls));
+            // todo: think what to do about this
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            this.transports.forEach((transport) => transport.call(e, eventWithoutNulls!));
         });
     }
 

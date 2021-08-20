@@ -8,7 +8,6 @@ class ExampleModule {}
 
 const customLogger = new NestTransportLogger({
     transports: [new DefaultTransportConsole()],
-    enableEventsWithoutNulls: true,
 });
 
 const bootstrap = async () => {
