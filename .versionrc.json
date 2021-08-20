@@ -1,0 +1,20 @@
+{
+    "commitUrlFormat": "https://github.com/DevAndDeliver/nest-logging-transport/commit/{{hash}}",
+    "compareUrlFormat": "https://github.com/DevAndDeliver/nest-logging-transport/compare/{{previousTag}}...{{currentTag}}",
+    "issueUrlFormat": "https://github.com/DevAndDeliver/nest-logging-transport/issues/{{id}}",
+    "userUrlFormat": "https://github.com/{{user}}",
+    "types": [
+        { "type": "feat", "section": "Features" },
+        { "type": "feature", "section": "Features" },
+        { "type": "fix", "section": "Bug Fixes" },
+        { "type": "perf", "section": "Performance Improvements" },
+        { "type": "revert", "section": "Reverts" },
+        { "type": "docs", "section": "Documentation" },
+        { "type": "style", "section": "Styles", "hidden": true },
+        { "type": "chore", "section": "Miscellaneous Chores", "hidden": true },
+        { "type": "refactor", "section": "Code Refactoring" },
+        { "type": "test", "section": "Tests" },
+        { "type": "build", "section": "Build Configuration" },
+        { "type": "ci", "section": "Continuous Integration" }
+    ]
+}
