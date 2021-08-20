@@ -21,7 +21,6 @@
         "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
         "release": "./node_modules/.bin/standard-version --no-verify",
         "preview": "node -r tsconfig-paths/register -r ts-node/register scripts/preview.ts",
-        "release:first": "yarn release --first-release",
         "release:major": "yarn release --release-as major",
         "release:minor": "yarn release --release-as minor",
         "release:patch": "yarn release --release-as patch"
