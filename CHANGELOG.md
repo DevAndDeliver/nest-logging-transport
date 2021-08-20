@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/DevAndDeliver/nest-logging-transport/compare/v0.0.3...v0.0.4) (2021-08-20)
+
+
+### Continuous Integration
+
+* unify release and publish workflows ([de084f0](https://github.com/DevAndDeliver/nest-logging-transport/commit/de084f0bbf3118b4e5e0721a844387a40d8d8cf9))
+
 ### [0.0.3](https://github.com/DevAndDeliver/nest-logging-transport/compare/v0.0.2...v0.0.3) (2021-08-20)
 
 
