@@ -24,13 +24,13 @@ export class DefaultTransportConsole implements Transport {
             context += this.colorize(`[${additionalContext}]`, 'additionalContext');
         }
 
-        const formattedStacktract = stacktrace ? this.colorize(`${stacktrace}\n`, 'stacktrace') : stacktrace;
+        const formattedStacktrace = stacktrace ? this.colorize(`${stacktrace}\n`, 'stacktrace') : stacktrace;
         const logLevel = type.toUpperCase();
         const formattedLogLevel = this.colorize(addPadding(logLevel, LONGEST_LOG_LEVEL_NAME - logLevel.length), type);
         const formattedTimestamp = this.colorize(timestamp.toLocaleString(), 'timestamp');
         const formattedMessage = this.colorize(message, type);
 
-        const logString = `[Nest] ${process.pid} - ${formattedTimestamp} ${formattedLogLevel} ${context} ${formattedMessage}\n${formattedStacktract}`;
+        const logString = `[Nest] ${process.pid} - ${formattedTimestamp} ${formattedLogLevel} ${context} ${formattedMessage}\n${formattedStacktrace}`;
         const colorizedLogString = this.colorize(logString, type);
         process.stdout.write(colorizedLogString);
     }
