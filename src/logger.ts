@@ -118,9 +118,9 @@ export class NestTransportLogger implements LoggerService {
 
         let logInformation: ParseLogInformationPayload;
         if (type === 'error') {
-            logInformation = this.parseLogInformation({ message, args });
-        } else {
             logInformation = this.parseErrorInformation({ message, args });
+        } else {
+            logInformation = this.parseLogInformation({ message, args });
         }
 
         const { messages, additionalContext, stacktrace, baseContext } = logInformation;
