@@ -16,6 +16,12 @@ const bootstrap = async () => {
     logger.log('Application ready');
     logger.verbose('Just a test log with context', 'thisIsContext');
     logger.error(new Error('123'));
+    logger.error('error', 'stacktrace');
+    logger.error('string');
+    const anonymousLogger = new Logger();
+    anonymousLogger.error('anonymous string');
+    anonymousLogger.error('error', 'stacktrace');
+    anonymousLogger.error(new Error('123'));
     await app.listen(3334, () => logger.log('Server listening'));
 };
 
