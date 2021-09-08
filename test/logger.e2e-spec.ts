@@ -117,7 +117,7 @@ describe('Logger (e2e)', () => {
 
     it('should properly parse error reported using anonymous logger', () => {
         const testError = new Error();
-        mockedService.loggerWithContext.error(testError);
+        mockedService.loggerWithoutContext.error(testError);
 
         expect(eventListener).toBeCalledWith({
             additionalContext: null,
@@ -139,6 +139,21 @@ describe('Logger (e2e)', () => {
             message: errorName,
             baseContext: null,
             stacktrace: testError.stack,
+            timestamp: mockedDate,
+            type: 'error',
+        });
+    });
+
+    it('should distinguish stacktrace from context when using anonymous logger', () => {
+        const ctx = 'baseCtx';
+        const errorName = 'errro';
+        mockedService.loggerWithoutContext.error(errorName, ctx);
+
+        expect(eventListener).toBeCalledWith({
+            additionalContext: null,
+            message: errorName,
+            baseContext: ctx,
+            stacktrace: null,
             timestamp: mockedDate,
             type: 'error',
         });

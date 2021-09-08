@@ -9,6 +9,8 @@ import {
 import { DefaultTransportConsole } from './transports/defaultTransportConsole';
 import { replaceNullsWithEmptyStrings } from './utils/log.utils';
 
+const STACKTRACE_REGEX = /.+: \n(.|\s)* at /m;
+
 @Injectable()
 export class NestTransportLogger implements LoggerService {
     protected transports: Transport[];
@@ -163,8 +165,8 @@ export class NestTransportLogger implements LoggerService {
                 return {
                     messages: [errMessage],
                     stacktrace,
-                    baseContext: args[0],
-                    additionalContext: args[1],
+                    baseContext: args[1],
+                    additionalContext: args[0],
                 };
             }
 
@@ -181,8 +183,14 @@ export class NestTransportLogger implements LoggerService {
 
         if (args.length === 1) {
             // This happens either when anonymous logger has log with stacktrace
-            // or when named logger has simple string log. Since we cannot distinguish them,
-            // we will treat it as named logger
+            // or when named logger has simple string log.
+            if (STACKTRACE_REGEX.test(args[0])) {
+                return {
+                    messages: [message],
+                    stacktrace: args[0],
+                };
+            }
+
             return { messages: [message], baseContext: args[0] };
         }
 
