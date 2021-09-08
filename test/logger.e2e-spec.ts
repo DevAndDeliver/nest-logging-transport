@@ -71,7 +71,7 @@ describe('Logger (e2e)', () => {
         }
     });
 
-    it('should properly parse errors when error method is called', () => {
+    it('should properly parse errors when error method is called with error', () => {
         const testError = new Error();
         mockedService.loggerWithContext.error(testError);
 
@@ -79,6 +79,65 @@ describe('Logger (e2e)', () => {
             additionalContext: null,
             baseContext: MockedService.name,
             message: `${testError}`,
+            stacktrace: testError.stack,
+            timestamp: mockedDate,
+            type: 'error',
+        });
+    });
+
+    it('should properly create log when stacktrace is passed manually', () => {
+        const testError = new Error();
+        const errorMessage = 'e';
+        mockedService.loggerWithContext.error(errorMessage, testError.stack);
+
+        expect(eventListener).toBeCalledWith({
+            additionalContext: null,
+            baseContext: MockedService.name,
+            message: errorMessage,
+            stacktrace: testError.stack,
+            timestamp: mockedDate,
+            type: 'error',
+        });
+    });
+
+    it('should properly parse error with additional context', () => {
+        const testError = new Error();
+        const additionalContext = 'ctx';
+        mockedService.loggerWithContext.error(testError, additionalContext);
+
+        expect(eventListener).toBeCalledWith({
+            additionalContext,
+            message: `${testError}`,
+            baseContext: MockedService.name,
+            stacktrace: testError.stack,
+            timestamp: mockedDate,
+            type: 'error',
+        });
+    });
+
+    it('should properly parse error reported using anonymous logger', () => {
+        const testError = new Error();
+        mockedService.loggerWithContext.error(testError);
+
+        expect(eventListener).toBeCalledWith({
+            additionalContext: null,
+            message: `${testError}`,
+            baseContext: null,
+            stacktrace: testError.stack,
+            timestamp: mockedDate,
+            type: 'error',
+        });
+    });
+
+    it('should properly create log when stacktrace is passed manually to anonymous logger', () => {
+        const testError = new Error();
+        const errorName = 'errro';
+        mockedService.loggerWithoutContext.error(errorName, testError.stack);
+
+        expect(eventListener).toBeCalledWith({
+            additionalContext: null,
+            message: errorName,
+            baseContext: null,
             stacktrace: testError.stack,
             timestamp: mockedDate,
             type: 'error',
