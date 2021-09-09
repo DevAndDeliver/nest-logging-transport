@@ -17,6 +17,7 @@ export interface ParseLogInformationPayload {
     messages: any[];
     stacktrace?: string;
     additionalContext?: string;
+    baseContext?: string;
 }
 
 export interface ParseLogsPayload {

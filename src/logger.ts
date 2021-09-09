@@ -9,6 +9,8 @@ import {
 import { DefaultTransportConsole } from './transports/defaultTransportConsole';
 import { replaceNullsWithEmptyStrings } from './utils/log.utils';
 
+const STACKTRACE_REGEX = /.+: \n(.|\s)* at /m;
+
 @Injectable()
 export class NestTransportLogger implements LoggerService {
     protected transports: Transport[];
@@ -113,15 +115,17 @@ export class NestTransportLogger implements LoggerService {
         });
     }
 
-    private parseLog({ message, args, canHaveStacktrace, type }: HandleLogMessageInput): Readonly<ParseLogsPayload> {
+    private parseLog({ message, args, type }: HandleLogMessageInput): Readonly<ParseLogsPayload> {
         const logDate = new Date();
-        const baseContext = typeof args === 'object' ? args[args.length - 1] : null;
-        const argsWithoutBaseContext = args ? args.slice(0, args.length - 1) : [];
-        const { messages, additionalContext, stacktrace } = this.parseLogInformation({
-            message,
-            args: argsWithoutBaseContext,
-            canHaveStacktrace,
-        });
+
+        let logInformation: ParseLogInformationPayload;
+        if (type === 'error') {
+            logInformation = this.parseErrorInformation({ message, args });
+        } else {
+            logInformation = this.parseLogInformation({ message, args });
+        }
+
+        const { messages, additionalContext, stacktrace, baseContext } = logInformation;
 
         return {
             messages,
@@ -133,16 +137,44 @@ export class NestTransportLogger implements LoggerService {
         } as const;
     }
 
-    private parseLogInformation({
+    private parseErrorInformation({
         message,
         args,
-        canHaveStacktrace,
-    }: Omit<HandleLogMessageInput, 'type'>): ParseLogInformationPayload {
-        if (canHaveStacktrace && this.isError(message)) {
+    }: Omit<HandleLogMessageInput, 'type' | 'canHaveStacktrace'>): ParseLogInformationPayload {
+        if (this.isError(message)) {
             const err = message;
-            const errMessage = err.message;
+            const errMessage = err.message || `${err}`;
             const stacktrace = err.stack;
-            return { messages: [errMessage].concat(args || []), stacktrace };
+
+            if (!args || args.length === 0) {
+                return {
+                    messages: [errMessage],
+                    stacktrace,
+                };
+            }
+
+            if (args.length === 1) {
+                return {
+                    messages: [errMessage],
+                    stacktrace,
+                    baseContext: args[0],
+                };
+            }
+
+            if (args.length === 2) {
+                return {
+                    messages: [errMessage],
+                    stacktrace,
+                    baseContext: args[1],
+                    additionalContext: args[0],
+                };
+            }
+
+            return {
+                messages: [errMessage].concat(args.slice(1, args.length - 1)),
+                stacktrace: args[0],
+                baseContext: args[args.length - 1],
+            };
         }
 
         if (!args || args.length === 0) {
@@ -150,36 +182,59 @@ export class NestTransportLogger implements LoggerService {
         }
 
         if (args.length === 1) {
-            if (typeof args[0] === 'string') {
-                return { messages: [message], additionalContext: args[0] };
+            // This happens either when anonymous logger has log with stacktrace
+            // or when named logger has simple string log.
+            if (STACKTRACE_REGEX.test(args[0])) {
+                return {
+                    messages: [message],
+                    stacktrace: args[0],
+                };
             }
 
-            return { messages: [message, ...args] };
+            return { messages: [message], baseContext: args[0] };
         }
 
-        if (args.length > 1 && canHaveStacktrace) {
-            const lastArg = args[args.length - 1];
-            const preLastArg = args[args.length - 2];
+        if (args.length === 2) {
+            return { messages: [message], baseContext: args[args.length - 1], stacktrace: args[0] };
+        }
 
-            if (typeof lastArg === 'string' && typeof preLastArg === 'string') {
-                return { messages: [message].concat(args.slice(0, args.length - 2)) };
+        // args.length > 2
+        return {
+            messages: [message].concat(args.slice(1, args.length - 1)),
+            baseContext: args[args.length - 1],
+            stacktrace: args[0],
+        };
+    }
+
+    private parseLogInformation({
+        message,
+        args: baseArgs = [],
+    }: Omit<HandleLogMessageInput, 'type'>): ParseLogInformationPayload {
+        const probableContext = typeof baseArgs === 'object' ? baseArgs[baseArgs.length - 1] : null;
+        const baseContext = typeof probableContext === 'string' ? probableContext : undefined;
+        const args = baseContext ? baseArgs.slice(0, baseArgs.length - 1) : baseArgs;
+
+        if (!args || args.length === 0) {
+            return { messages: [message], baseContext };
+        }
+
+        if (args.length === 1) {
+            if (typeof args[0] === 'string') {
+                return { messages: [message], additionalContext: args[0], baseContext };
             }
 
-            if (typeof lastArg === 'string') {
-                return { messages: [message].concat(args.slice(0, args.length - 1)) };
-            }
-
-            return { messages: [message, ...args] };
+            return { messages: [message, ...args], baseContext };
         }
 
         if (typeof args[args.length - 1] === 'string') {
-            return { messages: [message].concat(args.slice(0, args.length - 1)) };
+            return { messages: [message].concat(args.slice(0, args.length - 1)), baseContext };
         }
 
-        return { messages: [message, ...args] };
+        return { messages: [message, ...args], baseContext };
     }
 
     private isError(val: unknown | Error): val is Error {
-        return !!(val && (<Error>val).message);
+        const errorVal = <Error>val;
+        return errorVal && !!(errorVal.stack || errorVal.name || errorVal.message || errorVal instanceof Error);
     }
 }
