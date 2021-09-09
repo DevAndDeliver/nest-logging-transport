@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/DevAndDeliver/nest-logging-transport/compare/v0.0.4...v0.0.5) (2021-09-09)
+
+
+### Bug Fixes
+
+* fix conditional log parsing ([c5be240](https://github.com/DevAndDeliver/nest-logging-transport/commit/c5be240839a4538f946a5a990005adcd07f9e8c5))
+* fix parsing errors ([f5d35ff](https://github.com/DevAndDeliver/nest-logging-transport/commit/f5d35ff46c3561f5a24966d0a74344beabf87bba))
+* remove force exit ([8e1a438](https://github.com/DevAndDeliver/nest-logging-transport/commit/8e1a43892c800515cce7b4d8745b02d867b0d660))
+
+
+### Tests
+
+* add more tests for errors ([2b1af72](https://github.com/DevAndDeliver/nest-logging-transport/commit/2b1af72c6df00b99a4f7111b2f2899c5210c974b))
+* create e2e tests for error logging ([c5474c8](https://github.com/DevAndDeliver/nest-logging-transport/commit/c5474c8959e2f03f91934be88a165a7a647bbda1))
+* start creating tests ([c6ec013](https://github.com/DevAndDeliver/nest-logging-transport/commit/c6ec01346d1ef7504f1d98f5749a7eaabe47ad04))
+
+
+### Code Refactoring
+
+* rewrite logger logic ([3642e3e](https://github.com/DevAndDeliver/nest-logging-transport/commit/3642e3e73d653a88cee9275fe8b936619279153c))
+
+
+### Build Configuration
+
+* upgrade dependencies, fix typo ([cf5fe77](https://github.com/DevAndDeliver/nest-logging-transport/commit/cf5fe7775b63870b4a4a15edf977efbaf192d060))
+* upgrade dev dependencies ([4f0a406](https://github.com/DevAndDeliver/nest-logging-transport/commit/4f0a406a8fff0857000b14a6af9e25a628cad657))
+* upgrade dev dependencies ([ea7c23e](https://github.com/DevAndDeliver/nest-logging-transport/commit/ea7c23ea927b442a643a629454224c33e7b9574d))
+
 ### [0.0.4](https://github.com/DevAndDeliver/nest-logging-transport/compare/v0.0.3...v0.0.4) (2021-08-20)
 
 
