@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/DevAndDeliver/nest-logging-transport/compare/v0.0.5...v0.0.6) (2021-09-13)
+
+
+### Continuous Integration
+
+* add codeql-analysis ([8a62dc5](https://github.com/DevAndDeliver/nest-logging-transport/commit/8a62dc59a3f30aff9af8f6daf3e13084f3e298f9))
+
 ### [0.0.5](https://github.com/DevAndDeliver/nest-logging-transport/compare/v0.0.4...v0.0.5) (2021-09-09)
 
 
