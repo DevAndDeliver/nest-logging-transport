@@ -158,6 +158,21 @@ describe('Logger (e2e)', () => {
             type: 'error',
         });
     });
+
+    it('should properly parse error with custom message, stacktrace and context', () => {
+        const err = new Error();
+        const additionalCtx = 'additionalContext';
+        mockedService.loggerWithContext.error(err.name, err.stack, additionalCtx);
+
+        expect(eventListener).toBeCalledWith({
+            additionalContext: additionalCtx,
+            message: err.name,
+            baseContext: MockedService.name,
+            stacktrace: err.stack,
+            timestamp: mockedDate,
+            type: 'error',
+        });
+    });
 });
 
 const eventListener = jest.fn();

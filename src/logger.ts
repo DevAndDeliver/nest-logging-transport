@@ -195,10 +195,19 @@ export class NestTransportLogger implements LoggerService {
         }
 
         if (args.length === 2) {
-            return { messages: [message], baseContext: args[args.length - 1], stacktrace: args[0] };
+            return { messages: [message], baseContext: args[1], stacktrace: args[0] };
         }
 
-        // args.length > 2
+        if (args.length === 3) {
+            return {
+                messages: [message],
+                baseContext: args[2],
+                additionalContext: args[1],
+                stacktrace: args[0],
+            };
+        }
+
+        // args.length > 3
         return {
             messages: [message].concat(args.slice(1, args.length - 1)),
             baseContext: args[args.length - 1],
