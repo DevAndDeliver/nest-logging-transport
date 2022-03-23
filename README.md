@@ -116,6 +116,7 @@ Steps to do that:
    2. `yarn release:patch`- when you want to change only last part of semver (x.x.X)
    3. `yarn release:minor`- when you want to change middle part of semver (x.X.x)
    4. `yarn release:major`- when you want to change first part of semver (X.x.x)
+4. Push created tags using `git push --follow-tags origin master`. **Don't use npm publish**.
 
 You can read more about semver on [semver.org page](https://semver.org).
 
