@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/DevAndDeliver/nest-logging-transport/compare/v0.0.8...v1.0.0) (2022-03-23)
+
+
+### Documentation
+
+* add missing information about not publishing package manually ([c26f478](https://github.com/DevAndDeliver/nest-logging-transport/commit/c26f478ec2dc431dab5e3139e01c06ad51c167bf))
+
+
+### Continuous Integration
+
+* change node version used on ci pipeline ([b3f0977](https://github.com/DevAndDeliver/nest-logging-transport/commit/b3f0977aee9b50c50471271a22c495128717db1a))
+
 ### [0.0.9](https://github.com/DevAndDeliver/nest-logging-transport/compare/v0.0.8...v0.0.9) (2022-03-23)
 
 
