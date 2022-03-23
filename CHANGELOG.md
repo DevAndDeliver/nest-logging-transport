@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/DevAndDeliver/nest-logging-transport/compare/v0.0.7...v0.0.8) (2022-03-23)
+
+
+### Build Configuration
+
+* upgrade dependencies ([bfb8311](https://github.com/DevAndDeliver/nest-logging-transport/commit/bfb831151b37d25283f135422757431b07b94b69))
+
+
+### Tests
+
+* add unit tests for log utils ([484be36](https://github.com/DevAndDeliver/nest-logging-transport/commit/484be3629723f14d691b920bd9d5adcc81722030))
+
+
+### Continuous Integration
+
+* add e2e tests to test pipeline ([d0e6168](https://github.com/DevAndDeliver/nest-logging-transport/commit/d0e6168eefd43a7ed2cbd0741792cc85be559f89))
+
+
+### Documentation
+
+* add basic readme ([707d8e7](https://github.com/DevAndDeliver/nest-logging-transport/commit/707d8e731aae4e0418ac721486317fecbcb9e056))
+* add informations about releases to README ([902e240](https://github.com/DevAndDeliver/nest-logging-transport/commit/902e2401d8be13052a6b69bc258d879cadf296cf))
+
 ### [0.0.7](https://github.com/DevAndDeliver/nest-logging-transport/compare/v0.0.6...v0.0.7) (2021-10-07)
 
 ### [0.0.6](https://github.com/DevAndDeliver/nest-logging-transport/compare/v0.0.5...v0.0.6) (2021-09-13)
