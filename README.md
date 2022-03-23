@@ -97,3 +97,26 @@ nulls as the second one.
 Logs from default (console) transport looks like this:
 
 ![image showing example log output](./docs/images/log-example.png)
+
+You can also use preview script, available after cloning the repository:
+
+```sh
+yarn preview
+```
+
+## Publishing package (for package maintainers and forks)
+
+Publishing this package is semi-automated.
+Steps to do that:
+
+1. Clone repository and checkout branch you want to release
+2. Install dependencies from current lockfile `yarn install --frozen-lockfile`
+3. Use release scripts:
+   1. `yarn release`- in most cases, release script will take care of giving package the right number
+   2. `yarn release:patch`- when you want to change only last part of semver (x.x.X)
+   3. `yarn release:minor`- when you want to change middle part of semver (x.X.x)
+   4. `yarn release:major`- when you want to change first part of semver (X.x.x)
+
+You can read more about semver on [semver.org page](https://semver.org).
+
+This project will follow semver from first major release (versions starting with 0 will be considered beta versions and will not follow semver).
