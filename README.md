@@ -91,3 +91,9 @@ Log with replaces nulls:
 
 Log functions in your logger can take event with nulls as first argument and without
 nulls as the second one.
+
+## Examples
+
+Logs from default (console) transport looks like this:
+
+![image showing example log output](./docs/images/log-example.png)
