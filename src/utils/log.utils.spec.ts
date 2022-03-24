@@ -45,5 +45,9 @@ describe('Log utils', () => {
         it('should properly add padding', () => {
             expect(addPadding('test', 2)).toStrictEqual('  test');
         });
+
+        it('should throw an error when padding is less than 0', () => {
+            expect(() => addPadding('test', -1)).toThrow(RangeError);
+        });
     });
 });
