@@ -17,3 +17,13 @@ test
 *.test.js
 src
 tsconfig.build.tsbuildinfo
+docs/
+scripts/
+.eslintingore
+.eslintrc.js
+.prettierrc
+.versionrc.json
+CHANGELOG.md
+jest.config.e2e.ts
+tsconfig.json
+

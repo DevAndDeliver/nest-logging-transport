@@ -16,6 +16,11 @@ const defaultColorSchema = {
 
 export class DefaultTransportConsole implements Transport {
     private readonly colorSchema = defaultColorSchema;
+    private readonly appName: string;
+
+    constructor(appName?: string) {
+        this.appName = appName || 'Nest';
+    }
 
     public call(_e: LogEvent, eventWithoutNulls: LogEventWithReplacedNulls): void {
         const { message, additionalContext, stacktrace, baseContext, type, timestamp } = eventWithoutNulls;
@@ -30,7 +35,7 @@ export class DefaultTransportConsole implements Transport {
         const formattedTimestamp = this.colorize(timestamp.toLocaleString(), 'timestamp');
         const formattedMessage = this.colorize(message, type);
 
-        const logString = `[Nest] ${process.pid} - ${formattedTimestamp} ${formattedLogLevel} ${context} ${formattedMessage}\n${formattedStacktrace}`;
+        const logString = `[${this.appName}] ${process.pid} - ${formattedTimestamp} ${formattedLogLevel} ${context} ${formattedMessage}\n${formattedStacktrace}`;
         const colorizedLogString = this.colorize(logString, type);
         process.stdout.write(colorizedLogString);
     }

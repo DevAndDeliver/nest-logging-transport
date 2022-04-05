@@ -7,7 +7,7 @@ import { DefaultTransportConsole } from '@/transports/defaultTransportConsole';
 class ExampleModule {}
 
 const customLogger = new NestTransportLogger({
-    transports: [new DefaultTransportConsole()],
+    transports: [new DefaultTransportConsole('AppName')],
 });
 
 const bootstrap = async () => {
