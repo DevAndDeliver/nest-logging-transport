@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/DevAndDeliver/nest-logging-transport/compare/v1.0.0...v1.1.0) (2022-04-05)
+
+
+### Features
+
+* allow to specify logger app name ([a248786](https://github.com/DevAndDeliver/nest-logging-transport/commit/a248786669e3f8082ceefb5f36e06a082407501e))
+
+
+### Tests
+
+* add test for range error when padding is less than 0 ([d6e0ff8](https://github.com/DevAndDeliver/nest-logging-transport/commit/d6e0ff835a336417665ed6d6e06c625a40bcb5c3))
+
+
+### Build Configuration
+
+* upgrade dependencies ([92b77a7](https://github.com/DevAndDeliver/nest-logging-transport/commit/92b77a7f4817d3ef81fc023b3556e8a0d657bb45))
+
 ## [1.0.0](https://github.com/DevAndDeliver/nest-logging-transport/compare/v0.0.8...v1.0.0) (2022-03-23)
 
 
