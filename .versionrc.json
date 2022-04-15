@@ -18,6 +18,6 @@
         { "type": "ci", "section": "Continuous Integration" }
     ],
     "scripts": {
-        "precommit": "yarn release --dry-run | sed -n '/^---/,/^---/p' | tail -n +2 | head -n -1 > LAST_RELEASE.md"
+        "postchangelog": "yarn release --dry-run | sed -n '/^---/,/^---/p' | tail -n +2 | head -n -1 > LAST_RELEASE.md && git add LAST_RELEASE.md"
     }
 }
