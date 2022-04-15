@@ -26,3 +26,4 @@ scripts/
 CHANGELOG.md
 jest.config.e2e.ts
 tsconfig.json
+LAST_RELEASE.md
