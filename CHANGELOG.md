@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/DevAndDeliver/nest-logging-transport/compare/v1.2.0...v1.2.1) (2022-10-19)
+
+
+### Bug Fixes
+
+* change lifecycle event for releasing package version ([eebd0f6](https://github.com/DevAndDeliver/nest-logging-transport/commit/eebd0f60c357a2f01ac5e46e4c470c0103a01b22))
+* remove LAST_RELEASE generation script ([f38fbda](https://github.com/DevAndDeliver/nest-logging-transport/commit/f38fbdac2ab9873083a8f434388423c46cbc360a))
+
+
+### Tests
+
+* delete one e2e test case, use new timers syntax ([2fa8147](https://github.com/DevAndDeliver/nest-logging-transport/commit/2fa81477a588332a711db597c27c2a17bfb46ff7))
+
+
+### Documentation
+
+* fix typo in readme ([cab04ad](https://github.com/DevAndDeliver/nest-logging-transport/commit/cab04adbdae25355d34d46e7c8e02b1d31fa01be))
+
+
+### Continuous Integration
+
+* change used node version from 16 to 18 ([63af6ce](https://github.com/DevAndDeliver/nest-logging-transport/commit/63af6ce4ba1f1f00c8feeaed1ba6eabc11c586a5))
+
+
+### Build Configuration
+
+* add eslintignore file to npmignore ([6b12c01](https://github.com/DevAndDeliver/nest-logging-transport/commit/6b12c01ec00744a15e4b5c5184ab2ad52c5a4aac))
+* upgrade dependencies ([a032bfd](https://github.com/DevAndDeliver/nest-logging-transport/commit/a032bfd4c5ebe4d9f1e87b69118e539a9819079a))
+
 ## [1.2.0](https://github.com/DevAndDeliver/nest-logging-transport/compare/v1.1.0...v1.2.0) (2022-04-15)
 
 
