@@ -51,11 +51,11 @@ To do it, simply create new object (or class):
 import { Transport, LogEvent, LogEventWithReplacedNulls } from 'nest-logging-transport';
 
 const customTransport = {
-    log(event: LogEvent, eventWithoutNulls: LogEventWithReplacedNulls) {
-        // [...]
-    }
+  log(event: LogEvent, eventWithoutNulls: LogEventWithReplacedNulls) {
     // [...]
-}
+  },
+  // [...]
+};
 ```
 
 You can find examples in [src/transports](./src/transports/).
@@ -76,7 +76,7 @@ Normal log:
 }
 ```
 
-Log with replaces nulls:
+Log with replaced nulls:
 
 ```js
 {
