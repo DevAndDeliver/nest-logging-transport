@@ -24,7 +24,7 @@ describe('Logger (e2e)', () => {
         await mockedApp.init();
         mockedService = mockedApp.get<MockedService>(MockedService);
 
-        jest.useFakeTimers('modern');
+        jest.useFakeTimers();
         jest.setSystemTime(mockedDate);
     });
 
@@ -122,21 +122,6 @@ describe('Logger (e2e)', () => {
         expect(eventListener).toBeCalledWith({
             additionalContext: null,
             message: `${testError}`,
-            baseContext: null,
-            stacktrace: testError.stack,
-            timestamp: mockedDate,
-            type: 'error',
-        });
-    });
-
-    it('should properly create log when stacktrace is passed manually to anonymous logger', () => {
-        const testError = new Error();
-        const errorName = 'errro';
-        mockedService.loggerWithoutContext.error(errorName, testError.stack);
-
-        expect(eventListener).toBeCalledWith({
-            additionalContext: null,
-            message: errorName,
             baseContext: null,
             stacktrace: testError.stack,
             timestamp: mockedDate,
