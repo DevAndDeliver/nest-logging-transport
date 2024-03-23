@@ -14,10 +14,6 @@ const config: Config.InitialOptions = {
         '!src/**/*.test.{js,ts}',
     ],
     roots: ['<rootDir>/src'],
-    moduleNameMapper: {
-        '^@/(.*)$': '<rootDir>/src/$1',
-        '^@test/(.*)$': '<rootDir>/test/$1',
-    },
 };
 
 export default config;

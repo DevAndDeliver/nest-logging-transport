@@ -1,4 +1,4 @@
-import { LogEvent, LogEventWithReplacedNulls } from '@/interfaces/transport';
+import { LogEvent, LogEventWithReplacedNulls } from '../interfaces/transport';
 
 export const replaceNullsWithEmptyStrings = (input: LogEvent) => {
     return Object.fromEntries(

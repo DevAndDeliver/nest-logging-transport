@@ -1,6 +1,6 @@
-import { LogEvent, LogEventWithReplacedNulls, Transport } from '@/interfaces/transport';
-import { addPadding, LONGEST_LOG_LEVEL_NAME } from '@/utils/log.utils';
 import 'colors';
+import { addPadding, LONGEST_LOG_LEVEL_NAME } from '../utils/log.utils';
+import { LogEvent, LogEventWithReplacedNulls, Transport } from '../interfaces/transport';
 
 const defaultColorSchema = {
     verbose: 'cyan',

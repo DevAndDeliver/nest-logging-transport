@@ -1,4 +1,4 @@
-import { LogEvent, Transport } from '@/interfaces/transport';
+import { LogEvent, Transport } from '../interfaces/transport';
 
 export class TransportJson implements Transport {
     public call(event: LogEvent): void {

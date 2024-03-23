@@ -1,4 +1,4 @@
-import { NestTransportLogger, Transport } from '@/main';
+import { NestTransportLogger, Transport } from '../src/main';
 import { INestApplication, Injectable, Logger, Module } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 

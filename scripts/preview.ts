@@ -1,7 +1,7 @@
 import { NestTransportLogger } from '../src/logger';
 import { Logger, Module } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { DefaultTransportConsole } from '@/transports/defaultTransportConsole';
+import { DefaultTransportConsole } from '../src/transports/defaultTransportConsole';
 
 @Module({})
 class ExampleModule {}

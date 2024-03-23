@@ -1,4 +1,4 @@
-import { LogEvent } from '@/interfaces/transport';
+import { LogEvent } from '../interfaces/transport';
 import { addPadding, replaceNullsWithEmptyStrings } from './log.utils';
 
 describe('Log utils', () => {

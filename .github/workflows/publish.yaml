@@ -30,7 +30,6 @@ jobs:
           prerelease: false
           release_name: ${{ github.ref }}
           tag_name: ${{ github.ref }}
-          body_path: LAST_RELEASE.md
         env:
           GITHUB_TOKEN: ${{ github.token }}
   publish:

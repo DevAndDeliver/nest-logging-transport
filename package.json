@@ -13,16 +13,16 @@
     "scripts": {
         "prebuild": "yarn clean",
         "clean": "rimraf coverage build tmp dist",
-        "build": "ttsc -p tsconfig.build.json",
+        "build": "tsc -p tsconfig.build.json",
         "format": "prettier --write \"src/**/*.ts\"",
         "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix --color",
-        "lint:diagnostics": "ttsc -p tsconfig.diagnostics.json",
+        "lint:diagnostics": "tsc -p tsconfig.diagnostics.json",
         "test": "jest",
-        "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+        "test:debug": "node --inspect-brk -r ts-node/register node_modules/.bin/jest --runInBand",
         "test:e2e": "jest --config ./jest.config.e2e.ts",
-        "test:e2e:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/jest/bin/jest --config ./jest.config.e2e.ts --runInBand",
+        "test:e2e:debug": "node --inspect-brk -r ts-node/register node_modules/jest/bin/jest --config ./jest.config.e2e.ts --runInBand",
         "release": "./node_modules/.bin/standard-version --no-verify",
-        "preview": "node -r tsconfig-paths/register -r ts-node/register scripts/preview.ts",
+        "preview": "node -r ts-node/register scripts/preview.ts",
         "release:major": "yarn release --release-as major",
         "release:minor": "yarn release --release-as minor",
         "release:patch": "yarn release --release-as patch"
@@ -51,11 +51,8 @@
         "standard-version": "^9.5.0",
         "ts-jest": "^29.1.2",
         "ts-node": "^10.9.2",
-        "tsconfig-paths": "^4.2.0",
         "tsd": "^0.30.7",
-        "ttypescript": "^1.5.15",
-        "typescript": "^5.4.3",
-        "typescript-transform-paths": "^3.4.7"
+        "typescript": "^5.4.3"
     },
     "peerDependencies": {
         "@nestjs/common": "^8.0.6"
