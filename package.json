@@ -1,6 +1,6 @@
 {
     "name": "nest-logging-transport",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "description": "Custom NestJS logger allowing you to attach custom transports",
     "main": "dist/main.js",
     "types": "dist/main.d.ts",

@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/DevAndDeliver/nest-logging-transport/compare/v1.2.1...v1.2.2) (2024-03-23)
+
+
+### Continuous Integration
+
+* add dependabot config ([#8](https://github.com/DevAndDeliver/nest-logging-transport/issues/8)) ([b086fa8](https://github.com/DevAndDeliver/nest-logging-transport/commit/b086fa8545d06f98d857abbb951d45317b46a199))
+* add more node versions to test on ([1d48de1](https://github.com/DevAndDeliver/nest-logging-transport/commit/1d48de1450d2219e06d4a35f6e4c6c8109a268d1))
+
+
+### Build Configuration
+
+* **deps:** bump [@babel/traverse](https://github.com/babel/babel/tree/HEAD/packages/babel-traverse) from 7.20.13 to 7.24.1. ([ce259bf](https://github.com/DevAndDeliver/nest-logging-transport/commit/ce259bf01beeddc43f53102c2bbdb6b2e65a64ca))
+* **deps:** bump github/codeql-action from 1 to 3 ([#10](https://github.com/DevAndDeliver/nest-logging-transport/issues/10)) ([98a4cd3](https://github.com/DevAndDeliver/nest-logging-transport/commit/98a4cd3eed8258f6724e23a14180245064489b86))
+* **deps:** bump json5 from 2.2.1 to 2.2.3 ([#3](https://github.com/DevAndDeliver/nest-logging-transport/issues/3)) ([e35c46d](https://github.com/DevAndDeliver/nest-logging-transport/commit/e35c46d656fb25f164fb3324e31be54d7ee12985))
+* **deps:** bump semver from 5.7.1 to 5.7.2 ([0584431](https://github.com/DevAndDeliver/nest-logging-transport/commit/05844315a7c32e9d14380f38e9043d60422e907c))
+* **deps:** bumps https://github.com/actions/checkout from 2 to 4. ([bbb68f7](https://github.com/DevAndDeliver/nest-logging-transport/commit/bbb68f731b63e159c07d4ce6fa880128a8323a9f))
+* update dev dependencies ([99d57b0](https://github.com/DevAndDeliver/nest-logging-transport/commit/99d57b0e4ab893e88d937af4572a35b53abd7779))
+
 ### [1.2.1](https://github.com/DevAndDeliver/nest-logging-transport/compare/v1.2.0...v1.2.1) (2022-10-19)
 
 
