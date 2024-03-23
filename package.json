@@ -6,7 +6,7 @@
     "types": "dist/main.d.ts",
     "repository": {
         "type": "git",
-        "url": "https://github.com/DevAndDeliver/nest-logging-transport.git"
+        "url": "git+https://github.com/DevAndDeliver/nest-logging-transport.git"
     },
     "author": "kkm <surdej@devanddeliver.com>",
     "license": "MIT",
@@ -21,7 +21,7 @@
         "test:debug": "node --inspect-brk -r ts-node/register node_modules/.bin/jest --runInBand",
         "test:e2e": "jest --config ./jest.config.e2e.ts",
         "test:e2e:debug": "node --inspect-brk -r ts-node/register node_modules/jest/bin/jest --config ./jest.config.e2e.ts --runInBand",
-        "release": "./node_modules/.bin/standard-version --no-verify",
+        "release": "standard-version --no-verify",
         "preview": "node -r ts-node/register scripts/preview.ts",
         "release:major": "yarn release --release-as major",
         "release:minor": "yarn release --release-as minor",
