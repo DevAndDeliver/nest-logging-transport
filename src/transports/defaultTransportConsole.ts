@@ -8,6 +8,7 @@ const defaultColorSchema = {
     log: 'green',
     debug: 'magenta',
     error: 'red',
+    fatal: 'red',
     mainContext: 'yellow',
     additionalContext: 'yellow',
     timestamp: 'white',
