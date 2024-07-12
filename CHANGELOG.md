@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/DevAndDeliver/nest-logging-transport/compare/v1.2.3...v1.3.0) (2024-07-12)
+
+
+### Features
+
+* implement fatal method ([#46](https://github.com/DevAndDeliver/nest-logging-transport/issues/46)) ([eca062e](https://github.com/DevAndDeliver/nest-logging-transport/commit/eca062ef99c4ed82937e6cc1e6fe50d433d727fd))
+
+
+### Build Configuration
+
+* **deps-dev:** bump tsd from 0.30.7 to 0.31.0 ([#15](https://github.com/DevAndDeliver/nest-logging-transport/issues/15)) ([bb2f1ae](https://github.com/DevAndDeliver/nest-logging-transport/commit/bb2f1aec7810aa3a4906c9238c2d1293e8d2743b))
+
 ### [1.2.3](https://github.com/DevAndDeliver/nest-logging-transport/compare/v1.2.2...v1.2.3) (2024-03-23)
 
 
