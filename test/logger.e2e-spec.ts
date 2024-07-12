@@ -167,4 +167,4 @@ const mockedTransport: Transport = {
     },
 };
 
-const logMethods = ['log', 'debug', 'verbose', 'warn', 'error'] as const;
+const logMethods = ['log', 'debug', 'verbose', 'warn', 'error', 'fatal'] as const;

@@ -76,6 +76,21 @@ export class NestTransportLogger implements LoggerService {
         return this.handleLogMessage({ message, args: optionalParams, type: 'verbose' });
     }
 
+    /**
+     * Write an 'fatal' level log, if the configured level allows for it.
+     * Prints to `stderr` with newline.
+     */
+    fatal(message: any, stack?: string, context?: string): void;
+    fatal(message: any, ...optionalParams: [...any, string?, string?]): void;
+    fatal(message: any, ...optionalParams: any[]) {
+        return this.handleLogMessage({
+            message,
+            args: optionalParams,
+            type: 'fatal',
+            canHaveStacktrace: true,
+        });
+    }
+
     private handleLogMessage(input: HandleLogMessageInput) {
         const parsedLog = this.parseLog(input);
         const events = this.createEventsFromLog(parsedLog);
@@ -119,7 +134,7 @@ export class NestTransportLogger implements LoggerService {
         const logDate = new Date();
 
         let logInformation: ParseLogInformationPayload;
-        if (type === 'error') {
+        if (type === 'error' || type === 'fatal') {
             logInformation = this.parseErrorInformation({ message, args });
         } else {
             logInformation = this.parseLogInformation({ message, args });
